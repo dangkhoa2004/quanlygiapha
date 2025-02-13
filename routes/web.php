@@ -22,4 +22,12 @@ use App\Http\Controllers\MemberController;
 Route::middleware('auth')->group(function () {
     Route::resource('members', MemberController::class);
 });
+
+
+use App\Http\Controllers\RelationshipController;
+
+Route::get('/relationships', [RelationshipController::class, 'index'])->name('relationships.index');
+Route::get('/api/relationships', [RelationshipController::class, 'getRelationshipData'])->name('getRelationshipData');
+
+
 require __DIR__ . '/auth.php';

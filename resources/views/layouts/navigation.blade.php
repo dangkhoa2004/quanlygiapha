@@ -1,4 +1,3 @@
-
 <nav x-data="{ open: false }" class="" style="background: linear-gradient(135deg, #d39e00, #a57a16);">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,7 +22,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('members.index')" :active="request()->routeIs('')">
+                    <x-nav-link :href="route('relationships.index')" :active="request()->routeIs('relationships.index')">
                         {{ __('Cây phả hệ') }}
                     </x-nav-link>
                 </div>

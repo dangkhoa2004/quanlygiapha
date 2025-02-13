@@ -20,16 +20,17 @@
                 <!-- Bảng danh sách thành viên -->
                 <x-table-modal
                     :data="$members->map(function($member) {
-                            return [
-                                'STT' => $member->id,
-                                'Họ Tên' => $member->name,
-                                'Ngày Sinh' => $member->birth_date,
-                                'Giới Tính' => $member->gender,
-                                'Ảnh' => $member->photo,
+                    return [
+                        'STT'        => $member->id,
+                        'Ảnh'        => $member->photo,
+                        'Họ Tên'     => $member->name,
+                        'Ngày Sinh'  => $member->birth_date,
+                        'Giới Tính'  => $member->gender,
                             ];
                         })"
                     editRoute="members.edit"
                     deleteRoute="members.destroy" />
+
             </div>
         </div>
     </div>

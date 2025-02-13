@@ -12,20 +12,17 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <style>
     body {
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
-        font-family: "Sedgwick Ave", serif;
-        font-weight: 400;
-        font-style: normal;
         background-color: #e8c77b;
         background-image: url(https://phanmemgiapha.vn/public/upload/theme/hoa-van-trans.png);
         background-repeat: repeat;
@@ -51,6 +48,7 @@
         </main>
 
     </div>
+
 </body>
 
 </html>

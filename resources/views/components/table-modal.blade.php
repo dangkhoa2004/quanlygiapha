@@ -23,9 +23,9 @@
         <tr>
             @foreach($row as $key => $cell)
             <td class="p-4 border-b border-blue-gray-50">
-                @if(str_contains(strtolower($key), 'ảnh') || str_contains(strtolower($key), 'photo'))
+                @if(str_contains(strtolower($key), 'Ảnh') || str_contains(strtolower($key), 'photo'))
                 @if($cell)
-                <img src="{{ asset('storage/'.$cell) }}" width="50" class="rounded-md">
+                <img src="{{$cell }}" width="50" class="rounded-md">
                 @else
                 <span class="text-gray-500">Không có ảnh</span>
                 @endif
