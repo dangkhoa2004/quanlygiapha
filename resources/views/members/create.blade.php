@@ -16,23 +16,23 @@
                 <!-- Họ và tên -->
                 <div class="mb-4">
                     <x-input-label for="name" :value="__('Họ và Tên')" />
-                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ old('name') }}" required autofocus />
+                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
                 <!-- Ngày sinh -->
                 <div class="mb-4">
                     <x-input-label for="birth_date" :value="__('Ngày Sinh')" />
-                    <x-text-input id="birth_date" class="block mt-1 w-full" type="date" name="birth_date" value="{{ old('birth_date') }}" required />
+                    <x-text-input id="birth_date" class="block mt-1 w-full" type="date" name="birth_date" required />
                     <x-input-error :messages="$errors->get('birth_date')" class="mt-2" />
                 </div>
 
                 <!-- Giới tính -->
-                <div class="mb-4">
+                z <div class="mb-4">
                     <x-input-label for="gender" :value="__('Giới Tính')" />
                     <select id="gender" name="gender" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                        <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Nam</option>
-                        <option value="feMale" {{ old('gender') == 'feMale' ? 'selected' : '' }}>Nữ</option>
+                        <option value="male">Nam</option>
+                        <option value="feMale">Nữ</option>
                     </select>
                     <x-input-error :messages="$errors->get('gender')" class="mt-2" />
                 </div>
