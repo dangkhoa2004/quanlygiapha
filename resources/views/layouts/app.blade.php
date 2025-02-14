@@ -27,10 +27,13 @@
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
-        overflow: auto;
         overscroll-behavior: contain;
         scrollbar-width: none;
         -ms-overflow-style: none;
+    }
+
+    .font-sans {
+        font-family: Roboto, Helvetica, Arial, sans-serif !important;
     }
 
     html::-webkit-scrollbar,

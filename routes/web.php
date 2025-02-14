@@ -20,9 +20,11 @@ Route::middleware('auth')->group(function () {
 use App\Http\Controllers\MemberController;
 
 Route::middleware('auth')->group(function () {
-    Route::resource('members', MemberController::class);
+    Route::resource('members', MemberController::class)->except(['show']);;
+    Route::get('/member/{id}', [MemberController::class, 'edit'])->name('members.edit');
+    Route::delete('/members/{member}', [MemberController::class, 'destroy'])->name('members.destroy');
+    Route::put('members/{id}', [MemberController::class, 'update'])->name('members.update');
 });
-
 
 use App\Http\Controllers\RelationshipController;
 

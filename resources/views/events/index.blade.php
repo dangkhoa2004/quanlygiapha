@@ -10,14 +10,14 @@
                         <i class="fas fa-arrow-left mr-2"></i> Trước
                     </x-primary-button>
                 </a>
-                <a id="btnToday" href="#">
-                    <x-primary-button class="px-6 py-3 text-lg">
-                        <i class="fas fa-calendar-day mr-2"></i> Hôm nay
-                    </x-primary-button>
-                </a>
                 <a id="btnNext" href="#">
                     <x-primary-button class="px-6 py-3 text-lg">
                         <i class="fas fa-arrow-right mr-2"></i> Sau
+                    </x-primary-button>
+                </a>
+                <a id="btnToday" href="#">
+                    <x-primary-button class="px-6 py-3 text-lg">
+                        <i class="fas fa-calendar-day mr-2"></i> Hôm nay
                     </x-primary-button>
                 </a>
             </div>
@@ -78,6 +78,19 @@
                     end: info.endStr
                 };
                 document.getElementById("range-actions").style.display = "block";
+            },
+            eventClick: info => {
+                const eventObj = info.event;
+                let htmlContent = `<p><strong>Tên sự kiện:</strong> ${eventObj.title}</p>`;
+                htmlContent += `<p><strong>Bắt đầu:</strong> ${eventObj.start ? eventObj.start.toLocaleDateString() : ""}</p>`;
+                if (eventObj.end) {
+                    htmlContent += `<p><strong>Kết thúc:</strong> ${eventObj.end.toLocaleDateString()}</p>`;
+                }
+                Swal.fire({
+                    title: "Chi tiết sự kiện",
+                    html: htmlContent,
+                    icon: "info"
+                });
             }
         });
         calendar.render();
@@ -169,6 +182,15 @@
             selectedRange = null;
             document.getElementById("range-actions").style.display = "none";
         });
+        document.addEventListener("DOMContentLoaded", () => {
+            // Lấy tất cả các thẻ <td>
+            document.querySelectorAll("td").forEach(td => {
+                if (td.textContent.trim().toLowerCase() === "all-day") {
+                    td.textContent = "Cả ngày";
+                }
+            });
+        });
+
         checkNavigationButtons();
     });
 </script>
@@ -176,11 +198,6 @@
 <style>
     .fc-daygrid-event {
         cursor: pointer;
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .fc-daygrid-event:hover {
-        transform: scale(1.1);
     }
 
     .fc-daygrid-day.long-pressed {
