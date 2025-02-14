@@ -21,10 +21,25 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <style>
-    body {
+    html,
+    body,
+    * {
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
+        overflow: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    html::-webkit-scrollbar,
+    *::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+    body {
         background-color: #e8c77b;
         background-image: url(https://phanmemgiapha.vn/public/upload/theme/hoa-van-trans.png);
         background-repeat: repeat;
