@@ -10,7 +10,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             MembersTableSeeder::class,
-            RelationshipsTableSeeder::class
+            RelationshipsTableSeeder::class,
+            EventSeeder::class
         ]);
     }
 }

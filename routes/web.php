@@ -29,5 +29,9 @@ use App\Http\Controllers\RelationshipController;
 Route::get('/relationships', [RelationshipController::class, 'index'])->name('relationships.index');
 Route::get('/api/relationships', [RelationshipController::class, 'getRelationshipData'])->name('getRelationshipData');
 
+use App\Http\Controllers\EventController;
+
+Route::get('/events', [EventController::class, 'index'])->name('events.index');;
+Route::get('/api/events', [EventController::class, 'getEventData'])->name('getEventData');
 
 require __DIR__ . '/auth.php';
