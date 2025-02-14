@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Services\MemberService;
 use App\Services\RelationshipService;
 use Illuminate\Http\Request;
+use Laravel\Pail\ValueObjects\Origin\Console;
 
 class MemberController extends Controller
 {
@@ -17,7 +18,6 @@ class MemberController extends Controller
         $this->memberService = $memberService;
         $this->relationshipService = $relationshipService;
     }
-
 
     /**
      * Hiển thị danh sách thành viên
@@ -64,6 +64,7 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Gọi dịch vụ cập nhật thành viên
         $this->memberService->updateMember($request, $id);
         return redirect()->route('members.index')->with('success', 'Cập nhật thành công');
     }
