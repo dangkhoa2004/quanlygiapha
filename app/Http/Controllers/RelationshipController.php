@@ -3,40 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Member;
-use App\Models\Relationship;
+use App\Services\RelationshipService;
 
 class RelationshipController extends Controller
 {
-    /**
-     * Trả về view hiển thị sơ đồ quan hệ.
-     */
-    public function index()
+    protected $relationshipService;
+
+    public function __construct(RelationshipService $relationshipService)
     {
-        return view('relationships.index');
+        $this->relationshipService = $relationshipService;
     }
 
-    /**
-     * API trả về dữ liệu quan hệ dưới dạng JSON.
-     */
+    public function index()
+    {
+        $relationships = $this->relationshipService->getAllRelationships();
+        return view('relationships.index', compact('relationships'));
+    }
+
     public function getRelationshipData()
     {
-        $members = Member::all();
-        $relationships = Relationship::all();
-
-        $treeData = $members->map(function ($member) use ($relationships) {
-            $relationship = $relationships->where('member_id', $member->id)->first();
-            return [
-                "ID" => $member->id,
-                "HoTen" => $member->name,
-                "NgaySinh" => $member->birth_date,
-                "GioiTinh" => $member->gender,
-                "QuanHe" => $relationship ? $relationship->relationship : "Không rõ",
-                "ChaID" => $relationship ? $relationship->born_id : null,
-                "AVT" => $member->photo ? asset($member->photo) : asset('assets/default-avatar.png')
-            ];
-        });
-
+        $treeData = $this->relationshipService->getRelationshipData();
         return response()->json($treeData);
     }
 }
