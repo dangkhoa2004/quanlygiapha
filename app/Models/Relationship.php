@@ -9,15 +9,17 @@ class Relationship extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['member_id', 'born_id', 'relationship'];
+    protected $fillable = ['member_id', 'related_member_id', 'relationship_type'];
 
+    // Thành viên chính (người có mối quan hệ)
     public function member()
     {
         return $this->belongsTo(Member::class, 'member_id');
     }
 
-    public function born()
+    // Thành viên liên quan (cha, con, anh chị em, vợ/chồng)
+    public function relatedMember()
     {
-        return $this->belongsTo(Member::class, 'born_id');
+        return $this->belongsTo(Member::class, 'related_member_id');
     }
 }

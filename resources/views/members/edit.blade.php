@@ -13,19 +13,16 @@
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <!-- Họ và tên -->
                 <div class="mb-4">
                     <x-input-label for="name" :value="__('Họ và Tên')" />
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
                         value="{{ $member->name }}" required autofocus />
                 </div>
-                <!-- Ngày sinh -->
                 <div class="mb-4">
                     <x-input-label for="birth_date" :value="__('Ngày Sinh')" />
                     <x-text-input id="birth_date" class="block mt-1 w-full" type="date" name="birth_date"
                         value="{{ $member->birth_date }}" required />
                 </div>
-                <!-- Giới tính -->
                 <div class="mb-4">
                     <x-input-label for="gender" :value="__('Giới Tính')" />
                     <select id="gender" name="gender" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
@@ -33,7 +30,6 @@
                         <option value="female" {{ $member->gender == 'female' ? 'selected' : '' }}>Nữ</option>
                     </select>
                 </div>
-                <!-- Ảnh đại diện -->
                 <div class="mb-4 flex items-center space-x-4">
                     <x-input-label for="photo" :value="__('Ảnh Đại Diện')" class="whitespace-nowrap" />
                     <x-text-input id="photo" class="block mt-1 w-full" type="file" name="photo" onchange="previewImageUrl()" />
@@ -43,7 +39,6 @@
                     </div>
                     @endif
                 </div>
-                <!-- Chọn Người Sinh Ra -->
                 <div class="mb-4">
                     <x-input-label for="born_id" :value="__('Người Sinh Ra')" />
                     <select id="born_id" name="born_id" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
@@ -54,8 +49,7 @@
                         </option>
                         @endforeach
                     </select>
-                </div>
-                <!-- Nút cập nhật & Trở về -->
+                </div>>
                 <div class="flex justify-end space-x-3 mt-4">
                     <a href="{{ route('members.index') }}">
                         <x-secondary-button>{{ __('Trở về') }}</x-secondary-button>
@@ -76,7 +70,6 @@
             preview.src = photoUrl;
         }
     }
-
     document.getElementById("updateBtn").addEventListener("click", function(event) {
         event.preventDefault();
 
