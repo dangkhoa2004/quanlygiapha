@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use App\Services\MemberService;
 use App\Services\RelationshipService;
 use Illuminate\Http\Request;
-use Laravel\Pail\ValueObjects\Origin\Console;
 
 class MemberController extends Controller
 {

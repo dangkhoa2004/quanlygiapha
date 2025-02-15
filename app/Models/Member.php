@@ -10,6 +10,7 @@ class Member extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'birth_date', 'death_date', 'gender', 'bio', 'photo'];
+
     public function relationships()
     {
         return $this->hasMany(Relationship::class, 'member_id');

@@ -12,23 +12,27 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
+                                class="inline-flex items-center">
+                        <i class="fas fa-home mr-2"></i> {{ __('Trang chủ') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">
-                        {{ __('Thành viên') }}
+                    <x-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')"
+                                class="inline-flex items-center">
+                        <i class="fas fa-users mr-2"></i> {{ __('Thành viên') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('relationships.index')" :active="request()->routeIs('relationships.index')">
-                        {{ __('Cây phả hệ') }}
+                    <x-nav-link :href="route('relationships.index')" :active="request()->routeIs('relationships.index')"
+                                class="inline-flex items-center">
+                        <i class="fas fa-sitemap mr-2"></i> {{ __('Cây phả hệ') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
-                        {{ __('Sự kiện') }}
+                    <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')"
+                                class="inline-flex items-center">
+                        <i class="fas fa-calendar-alt mr-2"></i> {{ __('Sự kiện') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -49,8 +53,8 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Thông tin') }}
+                        <x-dropdown-link :href="route('profile.edit')" class="inline-flex items-center">
+                            <i class="fas fa-user-cog mr-2"></i> {{ __('Thông tin') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -59,8 +63,8 @@
 
                             <x-dropdown-link :href="route('logout')"
                                 onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Đăng xuất') }}
+                                                this.closest('form').submit();" class="inline-flex items-center">
+                                <i class="fas fa-sign-out-alt mr-2"></i> {{ __('Đăng xuất') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -82,8 +86,9 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Trang chủ') }}
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
+                                   class="inline-flex items-center">
+                <i class="fas fa-home mr-2"></i> {{ __('Trang chủ') }}
             </x-responsive-nav-link>
         </div>
 
@@ -95,8 +100,8 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Thông tin') }}
+                <x-responsive-nav-link :href="route('profile.edit')" class="inline-flex items-center">
+                    <i class="fas fa-user-cog mr-2"></i> {{ __('Thông tin') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -105,8 +110,8 @@
 
                     <x-responsive-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Đăng xuất') }}
+                                        this.closest('form').submit();" class="inline-flex items-center">
+                        <i class="fas fa-sign-out-alt mr-2"></i> {{ __('Đăng xuất') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

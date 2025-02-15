@@ -42,10 +42,10 @@
 
         <div id="range-actions">
             <a id="btnAddEvent" href="#">
-                <x-primary-button class="px-6 py-3 text-lg"> Thêm </x-primary-button>
+                <x-primary-button class="px-6 py-3 text-lg"> Thêm</x-primary-button>
             </a>
             <a id="btnCancelSelection" href="#">
-                <x-primary-button class="px-6 py-3 text-lg"> Huỷ </x-primary-button>
+                <x-primary-button class="px-6 py-3 text-lg"> Huỷ</x-primary-button>
             </a>
         </div>
     </div>
@@ -116,6 +116,7 @@
                 btnToday.style.display = "block";
             }
         }
+
         btnPrev.addEventListener("click", () => {
             calendar.prev();
             titleEl.innerText = calendar.view.title;
