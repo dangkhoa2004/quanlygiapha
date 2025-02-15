@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Member;
 use App\Models\Relationship;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class RelationshipService
@@ -24,6 +24,10 @@ class RelationshipService
         $members = Member::all();
         $relationships = Relationship::all();
 
+        if ($members->isEmpty()) {
+            return response()->json([], 200);
+        }
+
         return $members->map(function ($member) use ($relationships) {
             $relationship = $relationships->where('member_id', $member->id)->first();
             return [
@@ -38,6 +42,9 @@ class RelationshipService
         });
     }
 
+    /**
+     * Lấy mối quan hệ theo ID.
+     */
     public function getRelationshipByMemberId($memberId)
     {
         return Relationship::where('member_id', $memberId)->first();
@@ -48,13 +55,17 @@ class RelationshipService
      */
     public function createRelationship(Request $request)
     {
-        $validatedData = $request->validate([
-            'member_id' => 'required|exists:members,id',
-            'born_id' => 'nullable|exists:members,id',
-            'relationship' => 'required|string|max:255'
-        ]);
+        try {
+            $validatedData = $request->validate([
+                'member_id' => 'required|exists:members,id',
+                'born_id' => 'nullable|exists:members,id',
+                'relationship' => 'required|string|max:255'
+            ]);
 
-        return Relationship::create($validatedData);
+            return Relationship::create($validatedData);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Có lỗi xảy ra: ' . $e->getMessage()], 500);
+        }
     }
 
     /**
@@ -62,16 +73,20 @@ class RelationshipService
      */
     public function updateRelationship(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'member_id' => 'required|exists:members,id',
-            'born_id' => 'nullable|exists:members,id',
-            'relationship' => 'required|string|max:255'
-        ]);
+        try {
+            $validatedData = $request->validate([
+                'member_id' => 'required|exists:members,id',
+                'born_id' => 'nullable|exists:members,id',
+                'relationship' => 'required|string|max:255'
+            ]);
 
-        $relationship = Relationship::findOrFail($id);
-        $relationship->update($validatedData);
+            $relationship = Relationship::findOrFail($id);
+            $relationship->update($validatedData);
 
-        return $relationship;
+            return response()->json(['message' => 'Cập nhật thành công'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Có lỗi xảy ra: ' . $e->getMessage()], 500);
+        }
     }
 
     /**
@@ -79,7 +94,13 @@ class RelationshipService
      */
     public function deleteRelationship($id)
     {
-        $relationship = Relationship::findOrFail($id);
-        $relationship->delete();
+        try {
+            $relationship = Relationship::findOrFail($id);
+            $relationship->delete();
+
+            return response()->json(['message' => 'Xóa thành công'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Có lỗi xảy ra: ' . $e->getMessage()], 500);
+        }
     }
 }

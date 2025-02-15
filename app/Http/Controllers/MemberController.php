@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Services\MemberService;
 use App\Services\RelationshipService;
 use Illuminate\Http\Request;
@@ -23,8 +22,12 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = $this->memberService->getAllMembers();
-        return view('members.index', compact('members'));
+        try {
+            $members = $this->memberService->getAllMembers();
+            return view('members.index', compact('members'));
+        } catch (\Exception $e) {
+            return redirect()->route('members.index')->with('error', 'Lỗi khi tải danh sách thành viên: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -32,8 +35,12 @@ class MemberController extends Controller
      */
     public function create()
     {
-        $members = $this->memberService->getAllMembers();
-        return view('members.create', compact('members'));
+        try {
+            $members = $this->memberService->getAllMembers();
+            return view('members.create', compact('members'));
+        } catch (\Exception $e) {
+            return redirect()->route('members.index')->with('error', 'Lỗi khi tải danh sách thành viên');
+        }
     }
 
     /**
@@ -41,8 +48,12 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $this->memberService->createMember($request);
-        return redirect()->route('members.index')->with('success', 'Thành viên được thêm thành công');
+        try {
+            $this->memberService->createMember($request);
+            return redirect()->route('members.index')->with('success', 'Thành viên được thêm thành công');
+        } catch (\Exception $e) {
+            return redirect()->route('members.create')->with('error', 'Lỗi khi tạo thành viên: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -50,30 +61,40 @@ class MemberController extends Controller
      */
     public function edit($id)
     {
-        $member = $this->memberService->getMemberById($id);
-        $members = $this->memberService->getAllMembers();
-        $relationship = $this->relationshipService->getRelationshipByMemberId($id); // Lấy quan hệ theo member_id
+        try {
+            $member = $this->memberService->getMemberById($id);
+            $members = $this->memberService->getAllMembers();
+            $relationship = $this->relationshipService->getRelationshipByMemberId($id);
 
-        return view('members.edit', compact('member', 'members', 'relationship'));
+            return view('members.edit', compact('member', 'members', 'relationship'));
+        } catch (\Exception $e) {
+            return redirect()->route('members.index')->with('error', 'Không tìm thấy thành viên');
+        }
     }
-
 
     /**
      * Cập nhật thông tin thành viên
      */
     public function update(Request $request, $id)
     {
-        // Gọi dịch vụ cập nhật thành viên
-        $this->memberService->updateMember($request, $id);
-        return redirect()->route('members.index')->with('success', 'Cập nhật thành công');
+        try {
+            $this->memberService->updateMember($request, $id);
+            return redirect()->route('members.index')->with('success', 'Cập nhật thành công');
+        } catch (\Exception $e) {
+            return redirect()->route('members.edit', ['id' => $id])->with('error', 'Lỗi khi cập nhật thành viên: ' . $e->getMessage());
+        }
     }
 
     /**
-     * Xóa thành viên với Swal xác nhận
+     * Xóa thành viên
      */
     public function destroy($id)
     {
-        $this->memberService->deleteMember($id);
-        return redirect()->route('members.index')->with('success', 'Thành viên đã bị xóa');
+        try {
+            $this->memberService->deleteMember($id);
+            return redirect()->route('members.index')->with('success', 'Thành viên đã bị xóa');
+        } catch (\Exception $e) {
+            return redirect()->route('members.index')->with('error', 'Lỗi khi xóa thành viên: ' . $e->getMessage());
+        }
     }
 }

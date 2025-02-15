@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RelationshipController;
 use Illuminate\Support\Facades\Route;
 
+// Routes trả về view
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,16 +22,36 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::resource('members', MemberController::class)->except(['show']);
-    Route::get('/member/{id}', [MemberController::class, 'edit'])->name('members.edit');
-    Route::delete('/members/{member}', [MemberController::class, 'destroy'])->name('members.destroy');
-    Route::put('members/{id}', [MemberController::class, 'update'])->name('members.update');
+    Route::resource('members', MemberController::class);
 });
 
-Route::get('/relationships', [RelationshipController::class, 'index'])->name('relationships.index');
-Route::get('/api/relationships', [RelationshipController::class, 'getRelationshipData'])->name('getRelationshipData');
+Route::middleware('auth')->group(function () {
+    Route::resource('relationships', RelationshipController::class);
+});
 
-Route::get('/events', [EventController::class, 'index'])->name('events.index');
-Route::get('/api/events', [EventController::class, 'getEventData'])->name('getEventData');
+Route::middleware('auth')->group(function () {
+    Route::resource('events', EventController::class);
+});
+
+// Routes trả về JSON (API)
+Route::prefix('api')->group(function () {
+    Route::get('/relationships', [RelationshipController::class, 'getRelationshipData'])->name('getRelationshipData');
+    Route::post('/relationships', [RelationshipController::class, 'store'])->name('relationships.store');
+    Route::get('/relationships/{id}', [RelationshipController::class, 'edit'])->name('relationships.edit');
+    Route::put('/relationships/{id}', [RelationshipController::class, 'update'])->name('relationships.update');
+    Route::delete('/relationships/{id}', [RelationshipController::class, 'destroy'])->name('relationships.destroy');
+    
+    Route::get('/events', [EventController::class, 'getEventData'])->name('getEventData');
+    Route::post('/events', [EventController::class, 'store'])->name('events.store');
+    Route::get('/events/{id}', [EventController::class, 'edit'])->name('events.edit');
+    Route::put('/events/{id}', [EventController::class, 'update'])->name('events.update');
+    Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
+    
+    Route::get('/members', [MemberController::class, 'getAllMembers'])->name('getAllMembers');
+    Route::post('/members', [MemberController::class, 'store'])->name('members.store');
+    Route::get('/members/{id}', [MemberController::class, 'edit'])->name('members.edit');
+    Route::put('/members/{id}', [MemberController::class, 'update'])->name('members.update');
+    Route::delete('/members/{id}', [MemberController::class, 'destroy'])->name('members.destroy');
+});
 
 require __DIR__ . '/auth.php';

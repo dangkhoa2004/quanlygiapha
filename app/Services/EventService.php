@@ -3,73 +3,90 @@
 namespace App\Services;
 
 use App\Models\Event;
+use Illuminate\Http\Request;
 
 class EventService
 {
+    /**
+     * Lấy tất cả sự kiện.
+     */
     public function getAllEvents()
     {
-        // Trả về tất cả sự kiện
         return Event::all();
     }
 
+    /**
+     * Lấy sự kiện theo ID.
+     */
     public function getEventById($id)
     {
-        // Trả về sự kiện theo ID, nếu không tìm thấy sẽ trả về lỗi 404
         return Event::findOrFail($id);
     }
 
-    public function createEvent($request)
+    /**
+     * Tạo mới sự kiện.
+     */
+    public function createEvent(Request $request)
     {
-        // Validate dữ liệu trước khi lưu
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'start' => 'required|date',
-            'end' => 'required|date|after_or_equal:start',
-            'color' => 'nullable|string|max:7', // Mã màu có thể là 7 ký tự (bao gồm dấu #)
-        ]);
+        try {
+            // Validate dữ liệu đầu vào
+            $validatedData = $request->validate([
+                'title' => 'required|string|max:255',
+                'start' => 'required|date',
+                'end' => 'required|date|after_or_equal:start',
+                'color' => 'nullable|string|max:7',
+            ]);
 
-        // Tạo mới sự kiện
-        return Event::create([
-            'title' => $validated['title'],
-            'start' => $validated['start'],
-            'end' => $validated['end'],
-            'color' => $validated['color'] ?? null,
-        ]);
+            // Tạo mới sự kiện
+            $event = Event::create($validatedData);
+
+            return response()->json(['message' => 'Sự kiện đã được tạo thành công', 'data' => $event], 201);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Lỗi khi tạo sự kiện: ' . $e->getMessage()], 500);
+        }
     }
 
-    public function updateEvent($request, $id)
+    /**
+     * Cập nhật sự kiện.
+     */
+    public function updateEvent(Request $request, $id)
     {
-        // Tìm sự kiện theo ID
-        $event = Event::findOrFail($id);
+        try {
+            // Tìm sự kiện theo ID
+            $event = Event::findOrFail($id);
 
-        // Validate dữ liệu trước khi cập nhật
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'start' => 'required|date',
-            'end' => 'required|date|after_or_equal:start',
-            'color' => 'nullable|string|max:7',
-        ]);
+            // Validate dữ liệu trước khi cập nhật
+            $validatedData = $request->validate([
+                'title' => 'required|string|max:255',
+                'start' => 'required|date',
+                'end' => 'required|date|after_or_equal:start',
+                'color' => 'nullable|string|max:7',
+            ]);
 
-        // Cập nhật sự kiện
-        $event->update([
-            'title' => $validated['title'],
-            'start' => $validated['start'],
-            'end' => $validated['end'],
-            'color' => $validated['color'] ?? $event->color,
-        ]);
+            // Cập nhật sự kiện
+            $event->update($validatedData);
 
-        return $event;
+            return response()->json(['message' => 'Cập nhật sự kiện thành công', 'data' => $event], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Lỗi khi cập nhật sự kiện: ' . $e->getMessage()], 500);
+        }
     }
 
+    /**
+     * Xóa sự kiện.
+     */
     public function deleteEvent($id)
     {
-        // Tìm sự kiện theo ID
-        $event = Event::findOrFail($id);
+        try {
+            // Tìm sự kiện theo ID
+            $event = Event::findOrFail($id);
 
-        // Xóa sự kiện
-        $event->delete();
+            // Xóa sự kiện
+            $event->delete();
 
-        return response()->json(['message' => 'Event deleted successfully.']);
+            return response()->json(['message' => 'Sự kiện đã được xóa thành công'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Lỗi khi xóa sự kiện: ' . $e->getMessage()], 500);
+        }
     }
 }
-
