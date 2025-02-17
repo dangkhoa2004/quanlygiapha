@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông báo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body class="bg-gray-200 p-4 flex justify-center">
+    <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-4">
+        <h2 class="text-xl font-bold mb-4">Thông báo</h2>
+
+        <div class="flex justify-between border-b pb-2 mb-4 text-sm">
+            <button class="font-semibold text-blue-600 border-b-2 border-blue-600 pb-1">Tất cả</button>
+            <button class="text-gray-500 hover:text-blue-600">Chưa đọc</button>
+        </div>
+
+        <h3 class="font-semibold mb-2 text-gray-700">Lời mời kết bạn</h3>
+        <div class="mb-3 flex items-center justify-between p-3 border rounded-lg bg-gray-50">
+            <div class="flex items-center">
+                <img src="https://i.ibb.co/MxkwZh2C/original-9f4a9b65d528a341463aacf53847bc17.webp"
+                    class="w-12 h-12 rounded-full mr-3" alt="User">
+                <div>
+                    <p class="font-medium">Daniel Novák</p>
+                    <p class="text-sm text-gray-500">1 ngày trước</p>
+                </div>
+            </div>
+            <div class="flex space-x-2">
+                <button class="bg-blue-500 text-white px-4 py-1 rounded-lg text-sm">Xác nhận</button>
+                <button class="bg-gray-300 px-4 py-1 rounded-lg text-sm">Xóa</button>
+            </div>
+        </div>
+
+        <div class="mb-4 flex items-center justify-between p-3 border rounded-lg bg-gray-50">
+            <div class="flex items-center">
+                <img src="https://i.ibb.co/MxkwZh2C/original-9f4a9b65d528a341463aacf53847bc17.webp"
+                    class="w-12 h-12 rounded-full mr-3" alt="User">
+                <div>
+                    <p class="font-medium">Minh Tran</p>
+                    <p class="text-sm text-gray-500">5 ngày trước</p>
+                </div>
+            </div>
+            <div class="flex space-x-2">
+                <button class="bg-blue-500 text-white px-4 py-1 rounded-lg text-sm">Xác nhận</button>
+                <button class="bg-gray-300 px-4 py-1 rounded-lg text-sm">Xóa</button>
+            </div>
+        </div>
+
+        <h3 class="font-semibold mb-2 text-gray-700">Hôm nay</h3>
+        <div class="space-y-3">
+            <div class="flex items-center p-3 border rounded-lg bg-gray-50">
+                <i class="fas fa-comment text-green-500 text-lg mr-3"></i>
+                <p class="text-sm"><span class="font-medium">Đức Trịnh</span> đã nhắc đến bạn trong một bình luận.</p>
+            </div>
+            <div class="flex items-center p-3 border rounded-lg bg-gray-50">
+                <i class="fas fa-users text-blue-500 text-lg mr-3"></i>
+                <p class="text-sm"><span class="font-medium">Đạt Black</span> đã nhắc đến bạn trong nhóm.</p>
+            </div>
+            <div class="flex items-center p-3 border rounded-lg bg-gray-50">
+                <i class="fas fa-heart text-red-500 text-lg mr-3"></i>
+                <p class="text-sm"><span class="font-medium">Ngọc Bùi</span> đã bày tỏ cảm xúc về bình luận của bạn.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

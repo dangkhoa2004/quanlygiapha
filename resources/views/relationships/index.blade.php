@@ -64,12 +64,12 @@
         border: 2px solid #7d5803;
         padding: 10px 15px;
         text-decoration: none;
-        color: white;
+        color: black;
         font-size: 14px;
         font-weight: bold;
         display: inline-block;
         border-radius: 8px;
-        background: linear-gradient(135deg, #7d5803, #d39e00);
+        background: white;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         position: relative;
         z-index: 2;
@@ -81,14 +81,6 @@
         border-radius: 8px;
     }
 
-    .tree li a:hover,
-    .tree li a:hover + ul li a {
-        background: linear-gradient(135deg, #d39e00, #7d5803);
-        color: #fff;
-        border: 2px solid #000;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    }
-
     .tree li a:hover + ul li::after,
     .tree li a:hover + ul li::before,
     .tree li a:hover + ul::before,
@@ -97,6 +89,7 @@
     }
 
     .tree li a .detail {
+        color: white;
         position: absolute;
         top: 115%;
         left: -10%;
@@ -111,6 +104,7 @@
     }
 
     .tree li a:hover .detail {
+        color: white;
         opacity: 1;
         transform: translateY(0);
     }
