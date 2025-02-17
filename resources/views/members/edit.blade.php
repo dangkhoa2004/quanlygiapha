@@ -10,41 +10,45 @@
                 </h2>
             </div>
             <form id="editForm" method="POST" action="{{ route('members.update', $member->id) }}"
-                enctype="multipart/form-data">
+                  enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-4">
-                    <x-input-label for="name" :value="__('Họ và Tên')" />
+                    <x-input-label for="name" :value="__('Họ và Tên')"/>
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                        value="{{ $member->name }}" required autofocus />
+                                  value="{{ $member->name }}" required autofocus/>
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="birth_date" :value="__('Ngày Sinh')" />
+                    <x-input-label for="birth_date" :value="__('Ngày Sinh')"/>
                     <x-text-input id="birth_date" class="block mt-1 w-full" type="date" name="birth_date"
-                        value="{{ $member->birth_date }}" required />
+                                  value="{{ $member->birth_date }}" required/>
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="gender" :value="__('Giới Tính')" />
+                    <x-input-label for="gender" :value="__('Giới Tính')"/>
                     <select id="gender" name="gender" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
                         <option value="male" {{ $member->gender == 'male' ? 'selected' : '' }}>Nam</option>
                         <option value="female" {{ $member->gender == 'female' ? 'selected' : '' }}>Nữ</option>
                     </select>
                 </div>
                 <div class="mb-4 flex items-center space-x-4">
-                    <x-input-label for="photo" :value="__('Ảnh Đại Diện')" class="whitespace-nowrap" />
-                    <x-text-input id="photo" class="block mt-1 w-full" type="file" name="photo" onchange="previewImageUrl()" />
+                    <x-input-label for="photo" :value="__('Ảnh Đại Diện')" class="whitespace-nowrap"/>
+                    <x-text-input id="photo" class="block mt-1 w-full" type="file" name="photo"
+                                  onchange="previewImageUrl()"/>
                     @if($member->photo)
                     <div class="mt-2">
-                        <img src="{{$member->photo }}" id="previewImage" class="w-24 h-24 rounded-full object-cover shadow-md border-2 border-gray-300" alt="Ảnh xem trước" />
+                        <img src="{{$member->photo }}" id="previewImage"
+                             class="w-24 h-24 rounded-full object-cover shadow-md border-2 border-gray-300"
+                             alt="Ảnh xem trước"/>
                     </div>
                     @endif
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="born_id" :value="__('Người Sinh Ra')" />
+                    <x-input-label for="born_id" :value="__('Người Sinh Ra')"/>
                     <select id="born_id" name="born_id" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
                         <option value="">-- Chọn người sinh ra --</option>
                         @foreach($members as $m)
-                        <option value="{{ $m->id }}" {{ isset($relationship) && $m->id == optional($relationship)->born_id ? 'selected' : '' }}>
+                        <option value="{{ $m->id }}" {{ isset($relationship) && $m->id ==
+                            optional($relationship)->born_id ? 'selected' : '' }}>
                             {{ $m->name }}
                         </option>
                         @endforeach
@@ -70,7 +74,8 @@
             preview.src = photoUrl;
         }
     }
-    document.getElementById("updateBtn").addEventListener("click", function(event) {
+
+    document.getElementById("updateBtn").addEventListener("click", function (event) {
         event.preventDefault();
 
         Swal.fire({

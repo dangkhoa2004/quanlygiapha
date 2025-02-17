@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\ChangeLog;
-use Illuminate\Http\Request;
 
 class ChangeLogService
 {

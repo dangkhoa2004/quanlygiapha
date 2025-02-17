@@ -10,7 +10,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -45,17 +45,18 @@
 </head>
 
 <body>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
-        <div>
-            <a href="/">
-                <img src="https://img.pikbest.com/origin/10/50/43/11HpIkbEsTnIe.png!sw800" class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-            </a>
-        </div>
-
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-            {{ $slot }}
-        </div>
+<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
+    <div>
+        <a href="/">
+            <img src="https://img.pikbest.com/origin/10/50/43/11HpIkbEsTnIe.png!sw800"
+                 class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200"/>
+        </a>
     </div>
+
+    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+        {{ $slot }}
+    </div>
+</div>
 </body>
 
 </html>

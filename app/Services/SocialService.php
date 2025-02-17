@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\SocialPost;
 use App\Models\SocialComment;
+use App\Models\SocialPost;
 use Illuminate\Http\Request;
 
 class SocialService

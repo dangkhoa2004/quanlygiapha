@@ -2,8 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\Relationship;
 use App\Models\Member;
+use App\Models\Relationship;
+use Exception;
 use Illuminate\Http\Request;
 
 class RelationshipService
@@ -63,7 +64,7 @@ class RelationshipService
             ]);
 
             return Relationship::create($validatedData);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['error' => 'Có lỗi xảy ra: ' . $e->getMessage()], 500);
         }
     }
@@ -84,7 +85,7 @@ class RelationshipService
             $relationship->update($validatedData);
 
             return response()->json(['message' => 'Cập nhật thành công'], 200);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['error' => 'Có lỗi xảy ra: ' . $e->getMessage()], 500);
         }
     }
@@ -99,7 +100,7 @@ class RelationshipService
             $relationship->delete();
 
             return response()->json(['message' => 'Xóa thành công'], 200);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['error' => 'Có lỗi xảy ra: ' . $e->getMessage()], 500);
         }
     }

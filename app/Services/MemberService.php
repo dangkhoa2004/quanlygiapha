@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Member;
 use App\Models\Relationship;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -54,7 +55,7 @@ class MemberService
             }
 
             return response()->json(['message' => 'Thành viên đã được tạo', 'data' => $member], 201);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['error' => 'Lỗi khi tạo thành viên: ' . $e->getMessage()], 500);
         }
     }
@@ -91,7 +92,7 @@ class MemberService
             );
 
             return response()->json(['message' => 'Cập nhật thành công', 'data' => $member], 200);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['error' => 'Lỗi khi cập nhật thành viên: ' . $e->getMessage()], 500);
         }
     }
@@ -116,7 +117,7 @@ class MemberService
             $member->delete();
 
             return response()->json(['message' => 'Thành viên đã bị xóa'], 200);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['error' => 'Lỗi khi xóa thành viên: ' . $e->getMessage()], 500);
         }
     }

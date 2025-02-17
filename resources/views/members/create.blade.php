@@ -12,29 +12,32 @@
             <form id="addForm" method="POST" action="{{ route('members.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
-                    <x-input-label for="name" :value="__('Họ và Tên')" />
-                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus />
+                    <x-input-label for="name" :value="__('Họ và Tên')"/>
+                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus/>
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="birth_date" :value="__('Ngày Sinh')" />
-                    <x-text-input id="birth_date" class="block mt-1 w-full" type="date" name="birth_date" required />
+                    <x-input-label for="birth_date" :value="__('Ngày Sinh')"/>
+                    <x-text-input id="birth_date" class="block mt-1 w-full" type="date" name="birth_date" required/>
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="gender" :value="__('Giới Tính')" />
+                    <x-input-label for="gender" :value="__('Giới Tính')"/>
                     <select id="gender" name="gender" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
                         <option value="male">Nam</option>
                         <option value="female">Nữ</option>
                     </select>
                 </div>
                 <div class="mb-4 flex items-center space-x-4">
-                    <x-input-label for="photo" :value="__('Ảnh Đại Diện')" class="whitespace-nowrap" />
-                    <x-text-input id="photo" class="block mt-1 w-full" type="file" name="photo" onchange="previewImageUrl()" />
+                    <x-input-label for="photo" :value="__('Ảnh Đại Diện')" class="whitespace-nowrap"/>
+                    <x-text-input id="photo" class="block mt-1 w-full" type="file" name="photo"
+                                  onchange="previewImageUrl()"/>
                     <div class="mt-2">
-                        <img src="#" id="previewImage" class="w-24 h-24 rounded-full object-cover shadow-md border-2 border-gray-300 hidden" alt="Ảnh xem trước" />
+                        <img src="#" id="previewImage"
+                             class="w-24 h-24 rounded-full object-cover shadow-md border-2 border-gray-300 hidden"
+                             alt="Ảnh xem trước"/>
                     </div>
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="born_id" :value="__('Người Sinh Ra')" />
+                    <x-input-label for="born_id" :value="__('Người Sinh Ra')"/>
                     <select id="born_id" name="born_id" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
                         <option value="">-- Chọn người sinh ra --</option>
                         @foreach($members as $m)
@@ -60,14 +63,15 @@
         const file = document.getElementById('photo').files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 preview.src = e.target.result;
                 preview.classList.remove('hidden');
             };
             reader.readAsDataURL(file);
         }
     }
-    document.getElementById("saveBtn").addEventListener("click", function(event) {
+
+    document.getElementById("saveBtn").addEventListener("click", function (event) {
         event.preventDefault();
 
         Swal.fire({

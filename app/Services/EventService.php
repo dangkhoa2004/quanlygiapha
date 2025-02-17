@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Event;
+use Exception;
 use Illuminate\Http\Request;
 
 class EventService
@@ -41,7 +42,7 @@ class EventService
             $event = Event::create($validatedData);
 
             return response()->json(['message' => 'Sự kiện đã được tạo thành công', 'data' => $event], 201);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['error' => 'Lỗi khi tạo sự kiện: ' . $e->getMessage()], 500);
         }
     }
@@ -67,7 +68,7 @@ class EventService
             $event->update($validatedData);
 
             return response()->json(['message' => 'Cập nhật sự kiện thành công', 'data' => $event], 200);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['error' => 'Lỗi khi cập nhật sự kiện: ' . $e->getMessage()], 500);
         }
     }
@@ -85,7 +86,7 @@ class EventService
             $event->delete();
 
             return response()->json(['message' => 'Sự kiện đã được xóa thành công'], 200);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['error' => 'Lỗi khi xóa sự kiện: ' . $e->getMessage()], 500);
         }
     }

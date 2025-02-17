@@ -29,7 +29,7 @@
                         </a>
                     </div>
                     <x-text-input type="text" id="searchInput" placeholder="Tìm kiếm..."
-                        class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-1/4" />
+                                  class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-1/4"/>
                 </div>
                 <x-table-modal
                     :data="$members->map(function($member) {
@@ -42,17 +42,17 @@
                         ];
                     })"
                     editRoute="members.edit"
-                    deleteRoute="members.destroy" />
+                    deleteRoute="members.destroy"/>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    document.getElementById('searchInput').addEventListener('input', function() {
+    document.getElementById('searchInput').addEventListener('input', function () {
         const filter = this.value.toLowerCase();
         const rows = document.querySelectorAll('tr');
-        rows.forEach(function(row) {
+        rows.forEach(function (row) {
             const columns = row.querySelectorAll('td');
             if (columns.length > 0) {
                 const name = columns[2].textContent.toLowerCase();

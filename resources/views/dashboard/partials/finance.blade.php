@@ -7,9 +7,9 @@
         </div>
         <div class="bg-green-200 p-2 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" viewBox="0 0 20 20"
-                fill="currentColor">
+                 fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-11a1 1 0 112 0v4a1 1 0 11-2 0V7z"
-                    clip-rule="evenodd" />
+                      clip-rule="evenodd"/>
             </svg>
         </div>
     </div>
@@ -20,9 +20,9 @@
         </div>
         <div class="bg-red-200 p-2 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" viewBox="0 0 20 20"
-                fill="currentColor">
+                 fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1 5a1 1 0 11-2 0v-4a1 1 0 112 0v4z"
-                    clip-rule="evenodd" />
+                      clip-rule="evenodd"/>
             </svg>
         </div>
     </div>
