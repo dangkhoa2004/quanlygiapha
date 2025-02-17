@@ -26,6 +26,18 @@ class RelationshipController extends Controller
             return redirect()->route('relationships.index')->with('error', 'Lỗi khi tải danh sách quan hệ: ' . $e->getMessage());
         }
     }
+    /**
+     * Hiển thị cây phả hệ gia đình.
+     */
+    public function panzoom()
+    {
+        try {
+            $relationships = $this->relationshipService->getAllRelationships();
+            return view('relationships.panzoom', compact('relationships'));
+        } catch (\Exception $e) {
+            return redirect()->route('relationships.panzoom')->with('error', 'Lỗi khi tải danh sách quan hệ: ' . $e->getMessage());
+        }
+    }
 
     /**
      * Lấy dữ liệu quan hệ dưới dạng JSON.

@@ -49,7 +49,7 @@
                         </option>
                         @endforeach
                     </select>
-                </div>>
+                </div>
                 <div class="flex justify-end space-x-3 mt-4">
                     <a href="{{ route('members.index') }}">
                         <x-secondary-button>{{ __('Trở về') }}</x-secondary-button>

@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/trang-chu', function () {
     return view('dashboard.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('trang-chu');
 
 // Quản lý hồ sơ cá nhân
 Route::middleware('auth')->group(function () {
@@ -29,11 +29,14 @@ Route::middleware('auth')->group(function () {
 // Quản lý thành viên gia đình
 Route::middleware('auth')->group(function () {
     Route::resource('members', MemberController::class);
+    Route::get('/quan-ly-thanh-vien', [MemberController::class, 'index'])->name('quan-ly-thanh-vien');
 });
 
 // Quản lý mối quan hệ gia đình
 Route::middleware('auth')->group(function () {
     Route::resource('relationships', RelationshipController::class);
+    Route::get('/cay-pha-he', [RelationshipController::class, 'panzoom'])->name('cay-pha-he');
+    Route::get('/quan-ly-moi-quan-he', [RelationshipController::class, 'index'])->name('quan-ly-moi-quan-he');
 });
 
 // Quản lý sự kiện gia đình
@@ -42,8 +45,9 @@ Route::middleware('auth')->group(function () {
 });
 
 // Quản lý tài sản tài chính của thành viên
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function (): void {
     Route::resource('financial-assets', FinancialAssetController::class);
+    Route::get('/quan-ly-tai-chinh', [FinancialAssetController::class, 'index'])->name('quan-ly-tai-chinh');
 });
 
 // Quản lý thông báo trong hệ thống
@@ -64,7 +68,6 @@ Route::middleware('auth')->group(function () {
 // Routes trả về JSON (API)
 Route::prefix('api')->group(function () {
     // API cho thành viên
-    Route::get('/members', [MemberController::class, 'getAllMembers'])->name('getAllMembers');
     Route::post('/members', [MemberController::class, 'store'])->name('members.store');
     Route::get('/members/{id}', [MemberController::class, 'edit'])->name('members.edit');
     Route::put('/members/{id}', [MemberController::class, 'update'])->name('members.update');
@@ -72,6 +75,7 @@ Route::prefix('api')->group(function () {
 
     // API cho mối quan hệ gia đình
     Route::get('/relationships', [RelationshipController::class, 'getRelationshipData'])->name('getRelationshipData');
+    Route::get('/cay-pha-he', [RelationshipController::class, 'getRelationshipData'])->name('getRelationshipData');
     Route::post('/relationships', [RelationshipController::class, 'store'])->name('relationships.store');
     Route::get('/relationships/{id}', [RelationshipController::class, 'edit'])->name('relationships.edit');
     Route::put('/relationships/{id}', [RelationshipController::class, 'update'])->name('relationships.update');

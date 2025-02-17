@@ -1,75 +1,111 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông báo</title>
+    <title>Quản lý Tiền vào - Tiền ra</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
-
-<body class="bg-gray-200 p-4 flex justify-center">
-    <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-4">
-        <h2 class="text-xl font-bold mb-4">Thông báo</h2>
-
-        <div class="flex justify-between border-b pb-2 mb-4 text-sm">
-            <button class="font-semibold text-blue-600 border-b-2 border-blue-600 pb-1">Tất cả</button>
-            <button class="text-gray-500 hover:text-blue-600">Chưa đọc</button>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-5xl mx-auto bg-white p-6 rounded-xl shadow-lg">
+        <h2 class="text-2xl font-semibold mb-4">Quản lý Tiền vào - Tiền ra</h2>
+        
+        <!-- Tổng quan số dư -->
+        <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="bg-green-100 p-4 rounded-lg">
+                <h3 class="text-green-600 font-semibold">Tổng Thu</h3>
+                <p class="text-xl font-bold">+50,000,000 VND</p>
+            </div>
+            <div class="bg-red-100 p-4 rounded-lg">
+                <h3 class="text-red-600 font-semibold">Tổng Chi</h3>
+                <p class="text-xl font-bold">-20,000,000 VND</p>
+            </div>
+            <div class="bg-blue-100 p-4 rounded-lg">
+                <h3 class="text-blue-600 font-semibold">Số dư</h3>
+                <p class="text-xl font-bold">30,000,000 VND</p>
+            </div>
         </div>
 
-        <h3 class="font-semibold mb-2 text-gray-700">Lời mời kết bạn</h3>
-        <div class="mb-3 flex items-center justify-between p-3 border rounded-lg bg-gray-50">
-            <div class="flex items-center">
-                <img src="https://i.ibb.co/MxkwZh2C/original-9f4a9b65d528a341463aacf53847bc17.webp"
-                    class="w-12 h-12 rounded-full mr-3" alt="User">
+        <!-- Trạng thái các quỹ -->
+        <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="bg-purple-100 p-4 rounded-lg">
+                <h3 class="text-purple-600 font-semibold">Quỹ Hoạt động</h3>
+                <p class="text-xl font-bold">70% Sử dụng</p>
+            </div>
+            <div class="bg-yellow-100 p-4 rounded-lg">
+                <h3 class="text-yellow-600 font-semibold">Quỹ Dự phòng</h3>
+                <p class="text-xl font-bold">40% Sử dụng</p>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-lg">
+                <h3 class="text-gray-600 font-semibold">Quỹ Đầu tư</h3>
+                <p class="text-xl font-bold">30% Sử dụng</p>
+            </div>
+        </div>
+
+        <!-- Form nhập giao dịch -->
+        <div class="mb-6 bg-gray-50 p-4 rounded-lg shadow">
+            <div class="grid grid-cols-3 gap-4">
                 <div>
-                    <p class="font-medium">Daniel Novák</p>
-                    <p class="text-sm text-gray-500">1 ngày trước</p>
+                    <label class="block text-sm font-medium text-gray-700">Số tiền</label>
+                    <input type="number" class="w-full border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Loại giao dịch</label>
+                    <select class="w-full border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300">
+                        <option value="income">Tiền vào</option>
+                        <option value="expense">Tiền ra</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Quỹ liên quan</label>
+                    <select class="w-full border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300">
+                        <option value="quy_hoat_dong">Quỹ Hoạt động</option>
+                        <option value="quy_du_phong">Quỹ Dự phòng</option>
+                        <option value="quy_dau_tu">Quỹ Đầu tư</option>
+                    </select>
                 </div>
             </div>
-            <div class="flex space-x-2">
-                <button class="bg-blue-500 text-white px-4 py-1 rounded-lg text-sm">Xác nhận</button>
-                <button class="bg-gray-300 px-4 py-1 rounded-lg text-sm">Xóa</button>
-            </div>
+            <button type="button" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">
+                Ghi nhận giao dịch
+            </button>
         </div>
 
-        <div class="mb-4 flex items-center justify-between p-3 border rounded-lg bg-gray-50">
-            <div class="flex items-center">
-                <img src="https://i.ibb.co/MxkwZh2C/original-9f4a9b65d528a341463aacf53847bc17.webp"
-                    class="w-12 h-12 rounded-full mr-3" alt="User">
-                <div>
-                    <p class="font-medium">Minh Tran</p>
-                    <p class="text-sm text-gray-500">5 ngày trước</p>
-                </div>
-            </div>
-            <div class="flex space-x-2">
-                <button class="bg-blue-500 text-white px-4 py-1 rounded-lg text-sm">Xác nhận</button>
-                <button class="bg-gray-300 px-4 py-1 rounded-lg text-sm">Xóa</button>
-            </div>
-        </div>
-
-        <h3 class="font-semibold mb-2 text-gray-700">Hôm nay</h3>
-        <div class="space-y-3">
-            <div class="flex items-center p-3 border rounded-lg bg-gray-50">
-                <i class="fas fa-comment text-green-500 text-lg mr-3"></i>
-                <p class="text-sm"><span class="font-medium">Đức Trịnh</span> đã nhắc đến bạn trong một bình luận.</p>
-            </div>
-            <div class="flex items-center p-3 border rounded-lg bg-gray-50">
-                <i class="fas fa-users text-blue-500 text-lg mr-3"></i>
-                <p class="text-sm"><span class="font-medium">Đạt Black</span> đã nhắc đến bạn trong nhóm.</p>
-            </div>
-            <div class="flex items-center p-3 border rounded-lg bg-gray-50">
-                <i class="fas fa-heart text-red-500 text-lg mr-3"></i>
-                <p class="text-sm"><span class="font-medium">Ngọc Bùi</span> đã bày tỏ cảm xúc về bình luận của bạn.</p>
-            </div>
+        <!-- Bảng danh sách giao dịch -->
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse bg-white shadow-md rounded-lg">
+                <thead class="bg-blue-500 text-white">
+                    <tr>
+                        <th class="p-3 text-left">Ngày</th>
+                        <th class="p-3 text-left">Số tiền</th>
+                        <th class="p-3 text-left">Loại giao dịch</th>
+                        <th class="p-3 text-left">Quỹ liên quan</th>
+                        <th class="p-3 text-center">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    <tr class="border-b">
+                        <td class="p-3">01/02/2025</td>
+                        <td class="p-3 text-green-600">+5,000,000 VND</td>
+                        <td class="p-3">Tiền vào</td>
+                        <td class="p-3">Quỹ Hoạt động</td>
+                        <td class="p-3 text-center">
+                            <button class="text-blue-600 hover:underline">Sửa</button>
+                            <button class="text-red-600 hover:underline ml-2">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="p-3">02/02/2025</td>
+                        <td class="p-3 text-red-600">-2,000,000 VND</td>
+                        <td class="p-3">Tiền ra</td>
+                        <td class="p-3">Quỹ Dự phòng</td>
+                        <td class="p-3 text-center">
+                            <button class="text-blue-600 hover:underline">Sửa</button>
+                            <button class="text-red-600 hover:underline ml-2">Xóa</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
-
 </html>

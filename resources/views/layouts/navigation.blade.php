@@ -5,33 +5,33 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('trang-chu') }}">
                         <img src="https://img.pikbest.com/origin/10/50/43/11HpIkbEsTnIe.png!sw800" class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
-                                class="inline-flex items-center">
+                    <x-nav-link :href="route('trang-chu')" :active="request()->routeIs('trang-chu')"
+                        class="inline-flex items-center">
                         <i class="fas fa-home mr-2"></i> {{ __('Trang chủ') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')"
-                                class="inline-flex items-center">
+                    <x-nav-link :href="route('quan-ly-thanh-vien')" :active="request()->routeIs('quan-ly-thanh-vien')"
+                        class="inline-flex items-center">
                         <i class="fas fa-users mr-2"></i> {{ __('Thành viên') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('relationships.index')" :active="request()->routeIs('relationships.index')"
-                                class="inline-flex items-center">
+                    <x-nav-link :href="route('cay-pha-he')" :active="request()->routeIs('cay-pha-he')"
+                        class="inline-flex items-center">
                         <i class="fas fa-sitemap mr-2"></i> {{ __('Cây phả hệ') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')"
-                                class="inline-flex items-center">
+                        class="inline-flex items-center">
                         <i class="fas fa-calendar-alt mr-2"></i> {{ __('Sự kiện') }}
                     </x-nav-link>
                 </div>
@@ -86,8 +86,8 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
-                                   class="inline-flex items-center">
+            <x-responsive-nav-link :href="route('trang-chu')" :active="request()->routeIs('trang-chu')"
+                class="inline-flex items-center">
                 <i class="fas fa-home mr-2"></i> {{ __('Trang chủ') }}
             </x-responsive-nav-link>
         </div>
