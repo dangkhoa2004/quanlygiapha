@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class=" p-6">
-    <div class="max-w-5xl mx-auto bg-white p-6 rounded-xl shadow-lg">
-        <h2 class="uppercase text-3xl font-bold text-center text-gray-800 dark:text-gray-200">
-            Quản lý Tiền vào - Tiền ra
-        </h2>
-        <div class="flex justify-between items-center my-8">
+<div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+    <div class="sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+        <div class="max-w-xl mx-auto">
+            <h2 class="uppercase text-3xl font-bold text-center text-gray-800 dark:text-gray-200">
+                Quản lý quỹ tài chính
+            </h2>
+        </div>
+        <div class="flex justify-between items-center my-4">
             <div class="flex gap-4">
                 <a href="javascript:history.go(-1)">
                     <x-secondary-button class="px-6 py-3 text-lg">

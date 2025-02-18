@@ -2,14 +2,14 @@
 
 @section('content')
 
-<div class="py-12 w-full min-w-max table-auto text-left">
-    <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-lg">
-        <div class="max-w-xl mx-auto py-2">
+<div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+    <div class="sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+        <div class="max-w-xl mx-auto">
             <h2 class="uppercase text-3xl font-bold text-center text-gray-800 dark:text-gray-200">
-                Quản lý mối quan hệ thành viên
+                Quản lý mối quan hệ
             </h2>
         </div>
-        <div class="flex justify-between items-center my-8">
+        <div class="flex justify-between items-center my-4">
             <div class="flex gap-4">
                 <a href="javascript:history.go(-1)">
                     <x-secondary-button class="px-6 py-3 text-lg">
