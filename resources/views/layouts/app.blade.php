@@ -29,7 +29,7 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        transition: all 0.3s ease-out;
+        transition: all 0.9s ease-out;
     }
 
     .font-sans {
@@ -60,6 +60,10 @@
             transform: translateY(500px);
         }
 
+        80% {
+            transform: translateY(-40px);
+        }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -67,7 +71,7 @@
     }
 
     main {
-        animation: slideDown 0.5s ease-out;
+        animation: slideDown 0.8s ease-out;
     }
 </style>
 

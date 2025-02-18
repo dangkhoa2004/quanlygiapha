@@ -10,8 +10,7 @@
     }
 </style>
 
-<body class="bg-none p-6">
-<div class="max-w-7xl mx-auto grid grid-cols-12 pt-6 gap-4">
+<div class="max-w-7xl mx-auto grid grid-cols-12 py-12 gap-4">
     <!-- Sidebar left -->
     <div class="col-span-3 sticky-sidebar">
         @include('dashboard.partials.reminder')
@@ -32,7 +31,6 @@
         </div>
     </div>
 </div>
-</body>
 
 </html>
 @endsection
