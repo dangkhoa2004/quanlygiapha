@@ -23,7 +23,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Số tiền</label>
                     <input type="number"
-                        class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                           class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Loại giao dịch</label>
