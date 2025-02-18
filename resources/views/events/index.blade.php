@@ -86,7 +86,7 @@
         calendar.render();
 
         // Lấy dữ liệu sự kiện từ server
-        fetch("{{ route('getEventData') }}")
+        fetch("{{ route('api.events.getData') }}")
             .then(response => response.json())
             .then(events => {
                 calendar.removeAllEvents();

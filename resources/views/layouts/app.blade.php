@@ -29,7 +29,7 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        transition: all 0.9s ease-out;
+        transition: all 0.3s ease-out;
     }
 
     .font-sans {
@@ -72,19 +72,19 @@
 </style>
 
 <body class="font-sans antialiased">
-<div class="min-h-screen">
-    @include('layouts.navigation')
-    @isset($header)
-    <header class="bg-white dark:bg-gray-800 shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            {{ $header }}
-        </div>
-    </header>
-    @endisset
-    <main>
-        @yield('content')
-    </main>
-</div>
+    <div class="min-h-screen">
+        @include('layouts.navigation')
+        @isset($header)
+        <header class="bg-white dark:bg-gray-800 shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
+        @endisset
+        <main>
+            @yield('content')
+        </main>
+    </div>
 </body>
 
 </html>

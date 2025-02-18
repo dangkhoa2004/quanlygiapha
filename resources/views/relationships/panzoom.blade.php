@@ -10,7 +10,7 @@
     </div>
 </div>
 <script>
-    d3.json("{{ route('getRelationshipData') }}").then(members => {
+    d3.json("{{ route('api.relationships.getData') }}").then(members => {
         const treeContainer = d3.select("#relationship-tree");
         const linksLayer = d3.select("#links-layer");
         const treeWrapper = document.getElementById("tree-wrapper");
