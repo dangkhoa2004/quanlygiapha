@@ -27,7 +27,6 @@
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
-        overscroll-behavior: contain;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
@@ -39,10 +38,12 @@
     html::-webkit-scrollbar,
     *::-webkit-scrollbar,
     body::-webkit-scrollbar {
+        scroll-behavior: smooth;
         display: none;
     }
 
     body {
+        scroll-behavior: smooth;
         background-color: #e8c77b;
         background-image: url(https://phanmemgiapha.vn/public/upload/theme/hoa-van-trans.png);
         background-repeat: repeat;
@@ -50,24 +51,24 @@
 </style>
 
 <body class="font-sans antialiased">
-<div class="min-h-screen">
-    @include('layouts.navigation')
+    <div class="min-h-screen">
+        @include('layouts.navigation')
 
-    <!-- Page Heading -->
-    @isset($header)
-    <header class="bg-white dark:bg-gray-800 shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            {{ $header }}
-        </div>
-    </header>
-    @endisset
+        <!-- Page Heading -->
+        @isset($header)
+        <header class="bg-white dark:bg-gray-800 shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
+        @endisset
 
-    <!-- Page Content -->
-    <main>
-        @yield('content')
-    </main>
+        <!-- Page Content -->
+        <main>
+            @yield('content')
+        </main>
 
-</div>
+    </div>
 
 </body>
 

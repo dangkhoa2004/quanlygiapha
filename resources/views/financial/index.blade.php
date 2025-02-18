@@ -10,7 +10,7 @@
         </div>
         <div class="flex justify-between items-center my-4">
             <div class="flex gap-4">
-                <a href="javascript:history.go(-1)">
+                <a href="{{ route('members.index') }}">
                     <x-secondary-button class="px-6 py-3 text-lg">
                         <i class="fas fa-arrow-left mr-2"></i>Quay lại
                     </x-secondary-button>
@@ -55,14 +55,14 @@
             <div class="grid grid-cols-3 gap-4 mb-4">
                 <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500">
                     <h3 class="text-green-600 font-semibold">Tổng Thu</h3>
-                    <p class="text-purple-600 font-bold mt-2">+50,000,000 VND</p>
+                    <p class="text-green-600 font-bold mt-2">+50,000,000 VND</p>
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500">
                     <h3 class="text-red-600 font-semibold">Tổng Chi</h3>
-                    <p class="text-purple-600 font-bold mt-2">-20,000,000 VND</p>
+                    <p class="text-red-600 font-bold mt-2">-20,000,000 VND</p>
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500">
-                    <h3 class="text-black font-semibold">Số dư</h3>
+                    <h3 class="text-purple-600 font-semibold">Số dư</h3>
                     <p class="text-purple-600 font-bold mt-2">30,000,000 VND</p>
                 </div>
             </div>
@@ -81,9 +81,9 @@
                 <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500">
                     <h3 class="text-yellow-600 font-semibold">Quỹ Dự phòng</h3>
                     <div class="w-full bg-yellow-200 h-2 rounded-lg overflow-hidden mt-2">
-                        <div class="bg-yellow-500 h-2 rounded-lg" style="width: 40%;"></div>
+                        <div class="bg-yellow-500 h-2 rounded-lg" style="width: 20%;"></div>
                     </div>
-                    <p class="text-yellow-600 font-bold mt-2">40% Sử dụng</p>
+                    <p class="text-yellow-600 font-bold mt-2">20% Sử dụng</p>
                 </div>
                 <!-- Quỹ Đầu tư -->
                 <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-gray-500">
@@ -95,7 +95,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Bảng danh sách giao dịch -->
         <div class="overflow-x-auto">
@@ -157,4 +156,7 @@
         </div>
     </div>
 </div>
+<script>
+
+</script>
 @endsection
