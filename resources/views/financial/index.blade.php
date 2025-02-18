@@ -126,16 +126,15 @@
             ]
             ]);
             @endphp
+
             <x-table-modal
-                :data="$transactions->map(function($transaction) {
-                        return [
-                            'STT' => $transaction->id,
-                            'Ngày' => $transaction->date,
-                            'Số tiền' => $transaction->amount ?? 'Không có',
-                            'Loại giao dịch' => $transaction->transactionType ?? 'Chưa xác định',
-                            'Quỹ liên quan' => $transaction->relatedFund ?? 'Chưa xác định',
-                        ]
-                    })"
+                :data="$transactions->map(fn($transaction) => [
+            'STT' => $transaction->id,
+            'Ngày' => $transaction->date,
+            'Số tiền' => $transaction->amount,
+            'Loại giao dịch' => $transaction->transactionType,
+            'Quỹ liên quan' => $transaction->relatedFund,
+        ])"
                 editRoute="members.edit"
                 deleteRoute="members.destroy"/>
         </div>
