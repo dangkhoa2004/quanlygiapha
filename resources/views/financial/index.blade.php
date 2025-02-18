@@ -21,33 +21,45 @@
         </div>
         <!-- Tổng quan số dư -->
         <div class="grid grid-cols-3 gap-4 mb-6">
-            <div class="bg-green-100 p-4 rounded-lg">
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500">
                 <h3 class="text-green-600 font-semibold">Tổng Thu</h3>
-                <p class="text-xl font-bold">+50,000,000 VND</p>
+                <p class="text-purple-600 font-bold mt-2">+50,000,000 VND</p>
             </div>
-            <div class="bg-red-100 p-4 rounded-lg">
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500">
                 <h3 class="text-red-600 font-semibold">Tổng Chi</h3>
-                <p class="text-xl font-bold">-20,000,000 VND</p>
+                <p class="text-purple-600 font-bold mt-2">-20,000,000 VND</p>
             </div>
-            <div class="bg-blue-100 p-4 rounded-lg">
-                <h3 class="text-blue-600 font-semibold">Số dư</h3>
-                <p class="text-xl font-bold">30,000,000 VND</p>
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500">
+                <h3 class="text-black font-semibold">Số dư</h3>
+                <p class="text-purple-600 font-bold mt-2">30,000,000 VND</p>
             </div>
         </div>
 
         <!-- Trạng thái các quỹ -->
         <div class="grid grid-cols-3 gap-4 mb-6">
-            <div class="bg-purple-100 p-4 rounded-lg">
+            <!-- Quỹ Hoạt động -->
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500">
                 <h3 class="text-purple-600 font-semibold">Quỹ Hoạt động</h3>
-                <p class="text-xl font-bold">70% Sử dụng</p>
+                <div class="w-full bg-purple-200 h-2 rounded-lg overflow-hidden mt-2">
+                    <div class="bg-purple-500 h-2 rounded-lg" style="width: 70%;"></div>
+                </div>
+                <p class="text-purple-600 font-bold mt-2">70% Sử dụng</p>
             </div>
-            <div class="bg-yellow-100 p-4 rounded-lg">
+            <!-- Quỹ Dự phòng -->
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500">
                 <h3 class="text-yellow-600 font-semibold">Quỹ Dự phòng</h3>
-                <p class="text-xl font-bold">40% Sử dụng</p>
+                <div class="w-full bg-yellow-200 h-2 rounded-lg overflow-hidden mt-2">
+                    <div class="bg-yellow-500 h-2 rounded-lg" style="width: 40%;"></div>
+                </div>
+                <p class="text-yellow-600 font-bold mt-2">40% Sử dụng</p>
             </div>
-            <div class="bg-gray-100 p-4 rounded-lg">
+            <!-- Quỹ Đầu tư -->
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-gray-500">
                 <h3 class="text-gray-600 font-semibold">Quỹ Đầu tư</h3>
-                <p class="text-xl font-bold">30% Sử dụng</p>
+                <div class="w-full bg-gray-200 h-2 rounded-lg overflow-hidden mt-2">
+                    <div class="bg-gray-500 h-2 rounded-lg" style="width: 30%;"></div>
+                </div>
+                <p class="text-gray-600 font-bold mt-2">30% Sử dụng</p>
             </div>
         </div>
 
@@ -97,7 +109,7 @@
                 <tbody class="text-gray-700">
                     <tr class="border-b">
                         <td class="p-3">01/02/2025</td>
-                        <td class="p-3 text-green-600">+5,000,000 VND</td>
+                        <td class="p-3 text-green-600">+50,000,000 VND</td>
                         <td class="p-3">Tiền vào</td>
                         <td class="p-3">Quỹ Hoạt động</td>
                         <td class="p-3 text-center">
@@ -118,7 +130,7 @@
                     </tr>
                     <tr class="border-b">
                         <td class="p-3">02/02/2025</td>
-                        <td class="p-3 text-red-600">-2,000,000 VND</td>
+                        <td class="p-3 text-red-600">-20,000,000 VND</td>
                         <td class="p-3">Tiền ra</td>
                         <td class="p-3">Quỹ Dự phòng</td>
                         <td class="p-3 text-center">
