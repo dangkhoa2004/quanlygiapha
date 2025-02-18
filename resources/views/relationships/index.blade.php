@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
     <div class="sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
         <div class="max-w-xl mx-auto">
@@ -17,8 +16,6 @@
                     </x-secondary-button>
                 </a>
             </div>
-            <x-text-input type="text" id="searchInput" placeholder="Tìm kiếm..."
-                class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-1/4" />
         </div>
         <div class="mb-4 bg-gray-50 p-8 rounded-lg shadow">
             <div class="grid grid-cols-3 gap-4">
@@ -41,60 +38,56 @@
                 <i class="fas fa-user-plus mr-2"></i> Thêm mới
             </x-primary-button>
         </div>
+        <!-- Bộ lọc bảng danh sách giao dịch -->
+        <div class="flex justify-between items-center my-4">
+            <div class="flex gap-4">
+                <a>
+                    <x-primary-button class="px-6 py-3 text-lg">
+                        <i class="fas fa-filter mr-2"></i>Bộ lọc
+                    </x-primary-button>
+                </a>
+            </div>
+            <x-text-input type="text" id="searchInput" placeholder="Tìm kiếm..."
+                          class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-1/4"/>
+        </div>
         <div class="overflow-x-auto">
-            <table class="w-full border-collapse bg-white shadow-md rounded-lg">
-                <thead class=" text-black">
-                    <tr class="font-bold text-lg">
-                        <th class="p-3 text-left">Thành viên</th>
-                        <th class="p-3 text-left">Liên kết với</th>
-                        <th class="p-3 text-left">Loại quan hệ</th>
-                        <th class="p-3 text-center">Hành động</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-700">
-                    <tr class="border-b">
-                        <td class="p-3">Trần Thị Mai</td>
-                        <td class="p-3">Trần Văn Dũng</td>
-                        <td class="p-3">Đời thứ 2</td>
-                        <td class="p-3 text-center">
-                            <button
-                                class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs hover:bg-blue-500/10 active:bg-blue-500/30"
-                                type="button">
-                                <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                    <i class="fas fa-edit text-blue-500"></i>
-                                </span>
-                            </button>
-                            <button type="button"
-                                class="delete-btn relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs hover:bg-red-500/10 active:bg-red-500/30 text-red-500">
-                                <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                    <i class="fas fa-trash-alt text-red-500"></i>
-                                </span>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="border-b">
-                        <td class="p-3">Trần Văn Tú</td>
-                        <td class="p-3">Trần Thị Hạnh</td>
-                        <td class="p-3">Đời thứ 3</td>
-                        <td class="p-3 text-center">
-                            <button
-                                class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs hover:bg-blue-500/10 active:bg-blue-500/30"
-                                type="button">
-                                <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                    <i class="fas fa-edit text-blue-500"></i>
-                                </span>
-                            </button>
-                            <button type="button"
-                                class="delete-btn relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs hover:bg-red-500/10 active:bg-red-500/30 text-red-500">
-                                <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                    <i class="fas fa-trash-alt text-red-500"></i>
-                                </span>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            @php
+            $members = collect([
+            (object) ['id' => 1, 'name' => 'Trần Thị Mai', 'relatedName' => 'Trần Văn Dũng', 'typeRelated' => 'Đời thứ
+            2'],
+            (object) ['id' => 2, 'name' => 'Trần Văn Tú', 'relatedName' => 'Trần Thị Hạnh', 'typeRelated' => 'Đời thứ
+            3']
+            ]);
+            @endphp
+            <x-table-modal
+                :data="$members->map(fn($member) => [
+        'STT' => $member->id,
+        'Thành viên' => $member->name ?? 'Chưa có tên',
+        'Liên kết với' => $member->relatedName ?: 'Không có',
+        'Loại quan hệ' => $member->typeRelated ?: 'Chưa xác định',
+    ])"
+                editRoute="members.edit"
+                deleteRoute="members.destroy"/>
+
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                const filter = this.value.trim().toLowerCase();
+                const rows = document.querySelectorAll('tbody tr');
+
+                rows.forEach(function (row) {
+                    const rowText = row.textContent.trim().toLowerCase();
+                    row.style.display = rowText.includes(filter) ? '' : 'none';
+                });
+            });
+        }
+    });
+</script>
+
 @endsection

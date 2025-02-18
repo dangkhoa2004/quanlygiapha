@@ -27,9 +27,20 @@
                         </x-primary-button>
                     </a>
                 </div>
+            </div>
+            <!-- Bộ lọc bảng danh sách giao dịch -->
+            <div class="flex justify-between items-center my-4">
+                <div class="flex gap-4">
+                    <a>
+                        <x-primary-button class="px-6 py-3 text-lg">
+                            <i class="fas fa-filter mr-2"></i>Bộ lọc
+                        </x-primary-button>
+                    </a>
+                </div>
                 <x-text-input type="text" id="searchInput" placeholder="Tìm kiếm..."
                               class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-1/4"/>
             </div>
+            <!-- Bảng danh sách thành viên -->
             <x-table-modal
                 :data="$members->map(function($member) {
                         return [
@@ -45,25 +56,21 @@
         </div>
     </div>
 </div>
-
 <script>
-    document.getElementById('searchInput').addEventListener('input', function () {
-        const filter = this.value.toLowerCase();
-        const rows = document.querySelectorAll('tr');
-        rows.forEach(function (row) {
-            const columns = row.querySelectorAll('td');
-            if (columns.length > 0) {
-                const name = columns[2].textContent.toLowerCase();
-                const birthDate = columns[3].textContent.toLowerCase();
-                const gender = columns[4].textContent.toLowerCase();
-                if (name.includes(filter) || birthDate.includes(filter) || gender.includes(filter)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            }
-        });
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                const filter = this.value.trim().toLowerCase();
+                const rows = document.querySelectorAll('tbody tr');
+
+                rows.forEach(function (row) {
+                    const rowText = row.textContent.trim().toLowerCase();
+                    row.style.display = rowText.includes(filter) ? '' : 'none';
+                });
+            });
+        }
     });
 </script>
-
 @endsection

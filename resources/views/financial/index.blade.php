@@ -16,8 +16,6 @@
                     </x-secondary-button>
                 </a>
             </div>
-            <x-text-input type="text" id="searchInput" placeholder="Tìm kiếm..."
-                class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-1/4" />
         </div>
         <!-- Form nhập giao dịch -->
         <div class="mb-4 bg-gray-50 p-8 rounded-lg shadow">
@@ -96,67 +94,68 @@
             </div>
         </div>
 
+        <!-- Bộ lọc bảng danh sách giao dịch -->
+        <div class="flex justify-between items-center my-4">
+            <div class="flex gap-4">
+                <a>
+                    <x-primary-button class="px-6 py-3 text-lg">
+                        <i class="fas fa-filter mr-2"></i>Bộ lọc
+                    </x-primary-button>
+                </a>
+            </div>
+            <x-text-input type="text" id="searchInput" placeholder="Tìm kiếm..."
+                          class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-1/4"/>
+        </div>
         <!-- Bảng danh sách giao dịch -->
         <div class="overflow-x-auto">
-            <table class="w-full border-collapse bg-white shadow-md rounded-l">
-                <thead class="text-black">
-                    <tr class="font-bold text-lg">
-                        <th class="p-3 text-left">Ngày</th>
-                        <th class="p-3 text-left">Số tiền</th>
-                        <th class="p-3 text-left">Loại giao dịch</th>
-                        <th class="p-3 text-left">Quỹ liên quan</th>
-                        <th class="p-3 text-center">Hành động</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-700">
-                    <tr class="border-b">
-                        <td class="p-3">01/02/2025</td>
-                        <td class="p-3 text-green-600">+50,000,000 VND</td>
-                        <td class="p-3">Tiền vào</td>
-                        <td class="p-3">Quỹ Hoạt động</td>
-                        <td class="p-3 text-center">
-                            <button
-                                class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs hover:bg-blue-500/10 active:bg-blue-500/30"
-                                type="button">
-                                <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                    <i class="fas fa-edit text-blue-500"></i>
-                                </span>
-                            </button>
-                            <button type="button"
-                                class="delete-btn relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs hover:bg-red-500/10 active:bg-red-500/30 text-red-500">
-                                <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                    <i class="fas fa-trash-alt text-red-500"></i>
-                                </span>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="border-b">
-                        <td class="p-3">02/02/2025</td>
-                        <td class="p-3 text-red-600">-20,000,000 VND</td>
-                        <td class="p-3">Tiền ra</td>
-                        <td class="p-3">Quỹ Dự phòng</td>
-                        <td class="p-3 text-center">
-                            <button
-                                class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs hover:bg-blue-500/10 active:bg-blue-500/30"
-                                type="button">
-                                <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                    <i class="fas fa-edit text-blue-500"></i>
-                                </span>
-                            </button>
-                            <button type="button"
-                                class="delete-btn relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs hover:bg-red-500/10 active:bg-red-500/30 text-red-500">
-                                <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                    <i class="fas fa-trash-alt text-red-500"></i>
-                                </span>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            @php
+            $transactions = collect([
+            (object) [
+            'id' => 1,
+            'date' => '01/02/2025',
+            'amount' => '+50,000,000 VND',
+            'transactionType' => 'Tiền vào',
+            'relatedFund' => 'Quỹ Hoạt động'
+            ],
+            (object) [
+            'id' => 2,
+            'date' => '02/02/2025',
+            'amount' => '-20,000,000 VND',
+            'transactionType' => 'Tiền ra',
+            'relatedFund' => 'Quỹ Dự phòng'
+            ]
+            ]);
+            @endphp
+            <x-table-modal
+                :data="$transactions->map(function($transaction) {
+                        return [
+                            'STT' => $transaction->id,
+                            'Ngày' => $transaction->date,
+                            'Số tiền' => $transaction->amount ?? 'Không có',
+                            'Loại giao dịch' => $transaction->transactionType ?? 'Chưa xác định',
+                            'Quỹ liên quan' => $transaction->relatedFund ?? 'Chưa xác định',
+                        ]
+                    })"
+                editRoute="members.edit"
+                deleteRoute="members.destroy"/>
         </div>
     </div>
 </div>
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
 
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                const filter = this.value.trim().toLowerCase();
+                const rows = document.querySelectorAll('tbody tr');
+
+                rows.forEach(function (row) {
+                    const rowText = row.textContent.trim().toLowerCase();
+                    row.style.display = rowText.includes(filter) ? '' : 'none';
+                });
+            });
+        }
+    });
 </script>
 @endsection
