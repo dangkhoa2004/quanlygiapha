@@ -29,6 +29,7 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        transition: all 0.9s ease-out;
     }
 
     .font-sans {
