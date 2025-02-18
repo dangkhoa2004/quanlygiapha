@@ -1,53 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-        <div class="flex justify-between items-center bg-white text-white p-4 rounded-lg shadow">
-            <div class="flex space-x-3">
-                <a id="btnPrev" href="#">
-                    <x-primary-button class="px-6 py-3 text-lg">
-                        <i class="fas fa-arrow-left mr-2"></i> Trước
-                    </x-primary-button>
-                </a>
-                <a id="btnNext" href="#">
-                    <x-primary-button class="px-6 py-3 text-lg">
-                        <i class="fas fa-arrow-right mr-2"></i> Sau
-                    </x-primary-button>
-                </a>
-                <a id="btnToday" href="#">
-                    <x-primary-button class="px-6 py-3 text-lg">
-                        <i class="fas fa-calendar-day mr-2"></i> Hôm nay
-                    </x-primary-button>
-                </a>
-            </div>
-            <h2 id="calendarTitle" class="text-black text-2xl font-bold">Tháng 2, 2025</h2>
-            <div class="flex space-x-3">
-                <a id="btnMonthView" href="#" style="display: none;">
-                    <x-primary-button class="px-6 py-3 text-lg">
-                        <i class="fas fa-calendar mr-2"></i> Lịch tháng
-                    </x-primary-button>
-                </a>
-                <a id="btnListView" href="#">
-                    <x-primary-button class="px-6 py-3 text-lg">
-                        <i class="fas fa-list mr-2"></i> Danh sách
-                    </x-primary-button>
-                </a>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow">
-            <div id="calendar" class="calendar"></div>
-        </div>
-
-        <div id="range-actions">
-            <a id="btnAddEvent" href="#">
-                <x-primary-button class="px-6 py-3 text-lg"> Thêm</x-primary-button>
+<div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+    <div class="flex justify-between items-center bg-white text-white p-4 rounded-lg shadow">
+        <div class="flex space-x-3">
+            <a id="btnPrev" href="#">
+                <x-primary-button class="px-6 py-3 text-lg">
+                    <i class="fas fa-arrow-left mr-2"></i> Trước
+                </x-primary-button>
             </a>
-            <a id="btnCancelSelection" href="#">
-                <x-primary-button class="px-6 py-3 text-lg"> Huỷ</x-primary-button>
+            <a id="btnNext" href="#">
+                <x-primary-button class="px-6 py-3 text-lg">
+                    <i class="fas fa-arrow-right mr-2"></i> Sau
+                </x-primary-button>
+            </a>
+            <a id="btnToday" href="#">
+                <x-primary-button class="px-6 py-3 text-lg">
+                    <i class="fas fa-calendar-day mr-2"></i> Hôm nay
+                </x-primary-button>
             </a>
         </div>
+        <h2 id="calendarTitle" class="text-black text-2xl font-bold">Tháng 2, 2025</h2>
+        <div class="flex space-x-3">
+            <a id="btnMonthView" href="#" style="display: none;">
+                <x-primary-button class="px-6 py-3 text-lg">
+                    <i class="fas fa-calendar mr-2"></i> Lịch tháng
+                </x-primary-button>
+            </a>
+            <a id="btnListView" href="#">
+                <x-primary-button class="px-6 py-3 text-lg">
+                    <i class="fas fa-list mr-2"></i> Danh sách
+                </x-primary-button>
+            </a>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow">
+        <div id="calendar" class="calendar"></div>
+    </div>
+
+    <div id="range-actions">
+        <a id="btnAddEvent" href="#">
+            <x-primary-button class="px-6 py-3 text-lg"> Thêm</x-primary-button>
+        </a>
+        <a id="btnCancelSelection" href="#">
+            <x-primary-button class="px-6 py-3 text-lg"> Huỷ</x-primary-button>
+        </a>
     </div>
 </div>
 
