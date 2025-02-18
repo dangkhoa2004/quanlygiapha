@@ -20,7 +20,7 @@
                           class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-1/4"/>
         </div>
         <!-- Tổng quan số dư -->
-        <div class="grid grid-cols-3 gap-4 mb-6">
+        <div class="grid grid-cols-3 gap-4 mb-4">
             <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500">
                 <h3 class="text-green-600 font-semibold">Tổng Thu</h3>
                 <p class="text-purple-600 font-bold mt-2">+50,000,000 VND</p>
@@ -36,7 +36,7 @@
         </div>
 
         <!-- Trạng thái các quỹ -->
-        <div class="grid grid-cols-3 gap-4 mb-6">
+        <div class="grid grid-cols-3 gap-4 mb-4">
             <!-- Quỹ Hoạt động -->
             <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500">
                 <h3 class="text-purple-600 font-semibold">Quỹ Hoạt động</h3>
@@ -64,7 +64,7 @@
         </div>
 
         <!-- Form nhập giao dịch -->
-        <div class="mb-8 bg-gray-50 p-8 rounded-lg shadow">
+        <div class="mb-4 bg-gray-50 p-8 rounded-lg shadow">
             <div class="grid grid-cols-3 gap-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Số tiền</label>

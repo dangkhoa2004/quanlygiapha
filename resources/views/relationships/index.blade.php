@@ -20,7 +20,7 @@
             <x-text-input type="text" id="searchInput" placeholder="Tìm kiếm..."
                           class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-1/4"/>
         </div>
-        <div class="mb-8 bg-gray-50 p-8 rounded-lg shadow">
+        <div class="mb-4 bg-gray-50 p-8 rounded-lg shadow">
             <div class="grid grid-cols-3 gap-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Thành viên</label>
