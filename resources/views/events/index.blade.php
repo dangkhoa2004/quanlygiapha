@@ -79,15 +79,28 @@
             },
             eventClick: info => {
                 const eventObj = info.event;
-                let htmlContent = `<p><strong>Tên sự kiện:</strong> ${eventObj.title}</p>`;
-                htmlContent += `<p><strong>Bắt đầu:</strong> ${eventObj.start ? eventObj.start.toLocaleDateString() : ""}</p>`;
-                if (eventObj.end) {
-                    htmlContent += `<p><strong>Kết thúc:</strong> ${eventObj.end.toLocaleDateString()}</p>`;
-                }
+                let htmlContent = `
+            <div class="p-4 bg-gray-100 rounded-lg text-gray-700">
+                <p class="text-lg font-semibold mb-2"><strong>${eventObj.title}</strong></p>
+                <p class="mb-1"><strong>Bắt đầu:</strong> ${eventObj.start ? eventObj.start.toLocaleDateString() : "Không xác định"}</p>
+                ${eventObj.end ? `<p><strong>Kết thúc:</strong> ${eventObj.end.toLocaleDateString()}</p>` : ""}
+            </div>
+            <div class="flex justify-end gap-2 mt-4">
+                <x-primary-button id="deleteEvent">Xoá</x-primary-button>            
+                <x-secondary-button id="closeSwal">Đóng</x-primary-button>
+            </div>`;
+
                 Swal.fire({
-                    title: "Chi tiết sự kiện",
+                    title: `<span class="uppercase text-gray-800 font-bold">Chi tiết sự kiện</span>`,
                     html: htmlContent,
-                    icon: "info"
+                    showConfirmButton: false,
+                    didOpen: () => {
+                        document.getElementById("closeSwal").addEventListener("click", () => Swal.close());
+                        document.getElementById("deleteEvent").addEventListener("click", () => {
+                            eventObj.remove();
+                            Swal.close();
+                        });
+                    }
                 });
             }
         });
@@ -97,7 +110,6 @@
             .then(events => {
                 calendar.removeAllEvents();
                 calendar.addEventSource(events);
-                console.log("Sự kiện mới đã được thêm vào.");
             })
             .catch(error => console.error("Lỗi tải sự kiện:", error));
 
@@ -159,19 +171,42 @@
             if (selectedRange) {
                 Swal.fire({
                     title: "Nhập tên sự kiện",
-                    input: "text",
-                    showCancelButton: true,
-                    confirmButtonText: "Thêm sự kiện",
-                    cancelButtonText: "Hủy"
-                }).then(result => {
-                    if (result.isConfirmed && result.value) {
-                        calendar.addEvent({
-                            title: result.value,
-                            start: selectedRange.start,
-                            end: selectedRange.end,
-                            allDay: true
+                    input: false,
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    customClass: {
+                        popup: "rounded-lg shadow-lg p-6",
+                        title: "text-lg font-semibold text-gray-800"
+                    },
+                    html: `
+                <div class="flex flex-col gap-4">
+                    <x-text-input id="swal-input" class="swal2-input border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-auto p-2 text-gray-700" type="text" placeholder="Nhập tên sự kiện..." />
+                    
+                    <div class="flex justify-end gap-2">
+                        <x-primary-button id="customCancel">Hủy</x-primary-button>
+                        <x-primary-button id="customConfirm">Thêm sự kiện</x-primary-button>
+                    </div>
+                </div>`,
+                    didOpen: () => {
+                        document.getElementById("customConfirm").addEventListener("click", () => {
+                            let eventTitle = document.getElementById("swal-input").value;
+                            if (eventTitle.trim()) {
+                                calendar.addEvent({
+                                    title: eventTitle,
+                                    start: selectedRange.start,
+                                    end: selectedRange.end,
+                                    allDay: true
+                                });
+                                Swal.close();
+                                clearSelection();
+                            } else {
+                                Swal.showValidationMessage("Vui lòng nhập tên sự kiện!");
+                            }
                         });
-                        clearSelection();
+
+                        document.getElementById("customCancel").addEventListener("click", () => {
+                            Swal.close();
+                        });
                     }
                 });
             }
@@ -181,15 +216,6 @@
             selectedRange = null;
             document.getElementById("range-actions").style.display = "none";
         });
-        document.addEventListener("DOMContentLoaded", () => {
-            // Lấy tất cả các thẻ <td>
-            document.querySelectorAll("td").forEach(td => {
-                if (td.textContent.trim().toLowerCase() === "all-day") {
-                    td.textContent = "Cả ngày";
-                }
-            });
-        });
-
         checkNavigationButtons();
     });
 </script>
