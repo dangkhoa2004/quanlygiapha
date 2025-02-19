@@ -1,4 +1,4 @@
-<div class="max-w-md w-full bg-white shadow-lg rounded-2xl border border-gray-200 p-4">
+<div class="max-w-md w-full bg-white shadow-lg rounded-2xl border p-4">
     <h2 class="text-xl font-semibold text-gray-800 text-center">Sự kiện sắp tới</h2>
     <div class="mt-4 overflow-y-auto max-h-80 space-y-4">
         <div class="p-4 bg-gray-50 shadow rounded-lg border border-gray-300">
